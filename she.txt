@@ -1,0 +1,25 @@
+infrastructure
+infrastructure_id Condition Maintainance Location Type
+
+Zoning Regulations
+Zone_id Zone_type Regulations Permitted uses Infrastructure_id
+
+urban projects
+P+id Pname Budge Start_date End_date
+
+Demographics 
+Demo_id Population income_distribution Employment_status Age_distribution infrastructure_id
+
+Transport Network
+N_id Capacity Frequency Mode
+
+Applies To
+P_id Zone_id Frequenct Mode
+
+associated to
+
+includes 
+
+has 
+
+supabase password Shishir0..9
