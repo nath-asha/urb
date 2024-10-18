@@ -1,9 +1,9 @@
 <?php
 // Database connection settings
-$host = 'localhost'; 
-$username = 'root'; // Default username for XAMPP MySQL
-$password = ''; // Default password for XAMPP MySQL is empty
-$database = 'urbanplan'; // Replace 'your_database_name' with the name of your database
+$host = 'localhost'; // MySQL server
+$username = 'root'; // MySQL username (default is 'root' for XAMPP)
+$password = ''; // MySQL password (default is empty for XAMPP)
+$database = 'urban_planning_db'; // Your MySQL database name
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $database);
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch resources from the database
-$sql = "SELECT * FROM resources"; // Assuming you have a table named 'resources'
+$sql = "SELECT * FROM resources";
 $result = $conn->query($sql);
 
 // Output the results as JSON

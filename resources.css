@@ -66,36 +66,3 @@ article a {
     color: #007bff;
     text-decoration: none;
 }
-
-/* Additional styles for the resource container */
-#resources-list {
-    margin: 20px;
-}
-
-/* Additional styles for each individual resource article */
-article {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-}
-
-/* Additional styles for resource title */
-article h2 {
-    margin-top: 0;
-}
-
-/* Additional styles for resource description */
-article p {
-    margin-bottom: 5px;
-}
-
-/* Additional styles for resource link */
-article a {
-    color: blue;
-    text-decoration: none;
-}
-
-/* Hover effect for resource links */
-article a:hover {
-    text-decoration: underline;
-}

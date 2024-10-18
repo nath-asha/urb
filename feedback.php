@@ -1,44 +1,26 @@
-<?php
-// Check if the form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the form data
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $message = $_POST['message'];
+// Fetch resources from the PHP backend
+fetch('http://localhost/resources.php')
+  .then(response => response.json())
+  .then(data => {
+    // Manipulate data as needed (e.g., render a list of resources)
+    renderResources(data);
+  })
+  .catch(error => console.error('Error fetching resources:', error));
 
-    // Process the data (you can save it to a database, send it via email, etc.)
-    // For this example, let's just display the submitted data
-    echo "<h2>Feedback Submitted</h2>";
-    echo "<p>Name: $name</p>";
-    echo "<p>Email: $email</p>";
-    echo "<p>Message: $message</p>";
+function renderResources(resources) {
+  const resourcesList = document.getElementById('resources-list');
 
-    // Database connection details
-    $host = 'localhost'; 
-    $username = 'root'; 
-    $password = ''; 
-    $database = 'urbanplan';
+  // Clear any existing content
+  resourcesList.innerHTML = '';
 
-    // Create connection
-    $con = mysqli_connect($host, $username, $password, $database);
-    // Check connection
-    if (!$con) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    // Insert form data into database
-    $sql = "INSERT INTO feedback (fname, email, message) VALUES ('$name', '$email', '$message')";
-    if (mysqli_query($con, $sql)) {
-        echo "Message has been sent successfully!";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($con);
-    }
-
-    // Close connection
-    mysqli_close($con);
-} else {
-    // If the form is not submitted, redirect back to the form page
-    header("Location: feedbackk.html");
-    exit;
+  // Create a new article element for each resource and append it to the resources list
+  resources.forEach(resource => {
+    const article = document.createElement('article');
+    article.innerHTML = `
+      <h2>${resource.title}</h2>
+      <p>${resource.description}</p>
+      <p>For more information, visit <a href="${resource.link}">${resource.link}</a>.</p>
+    `;
+    resourcesList.appendChild(article);
+  });
 }
-?>
